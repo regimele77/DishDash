@@ -1,0 +1,33 @@
+       *{
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .nav-container{
+            background-color: #2f4858;
+            padding-left: 5%;
+            padding-right: 5%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-container{
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu-container a{
+            text-decoration: none;
+            font-size: large;
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .menu-container a:hover{
+            color: #D67411;
+        }
