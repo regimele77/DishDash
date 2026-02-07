@@ -1,9 +1,21 @@
 from django.shortcuts import render
-
-# Create your views here.
+from restaurant.models import Restaurant
 
 def index(request):
-    return render(request, 'index.html')
+    all_restaurants = Restaurant.objects.all()
+    ctx = {
+        'all_restaurants': all_restaurants
+    }
+    return render(request, 'index.html', ctx)
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def pricing(request):
+    return render(request, 'pricing.html')
 
 # Base
 # Index

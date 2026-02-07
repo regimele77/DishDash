@@ -2,6 +2,31 @@
 
 {% block content %}
 
-    hello
+    <h1 class="main-title">Our restaurants</h1>
+
+    <div class="all-restaurants-container">
+        {% for restaurant in all_restaurants %}
+            <div class="cart-container">
+                <img
+                    src="{{ restaurant.logo_link }}"
+                    width="100%"
+                    height="200px"
+                    style="border-radius: 15px;"
+                    alt="{{ restaurant.name }}"
+                >
+
+                <div class="content-container">
+                    <h2 class="restaurant-title">{{ restaurant.name }}</h2>
+                    <p class="restaurant-description">
+                        {{ restaurant.description }}
+                    </p>
+                    <div class="restaurant-buttons">
+                        <a href="">View Menu</a>
+                        <a href="mailto:{{ restaurant.email }}">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock content %}

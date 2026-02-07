@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="about-us-banner-container restaurant-buttons">
+        <div class="blur-overlay"></div>
+        <h1>Best menu provider in Tirana</h1>
+        <a href="{% url 'index' %}">
+            Choose a restaurant
+        </a>
+    </div>
+
+    <div class="what-we-do-container">
+
+        <div class="what-we-do-inner">
+            <h1>What we do</h1>
+            <p>Program i cili reklamon menune e restoranteve ne Shqiperi</p>
+            <p>Miresevini</p>
+        </div>
+
+        <div class="our-features">
+            <div class="feature-1">
+                <div></div>
+                <i class="fa fa-info" aria-hidden="true"></i>
+                <h3>Info</h3>
+                <p>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                </p>
+            </div>
+
+            <div class="feature-2">
+                <div></div>
+                <i class="fa fa-cutlery" aria-hidden="true"></i>
+                <h3>Food</h3>
+                <p>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                </p>
+            </div>
+
+            <div class="feature-3">
+                <div></div>
+                <i class="fa fa-usd" aria-hidden="true"></i>
+                <h3>Payment</h3>
+                <p>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                    Lorem, ipsum dolor sit amet <br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
