@@ -1,5 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Contact us page
+    <div class="contact-container">
+        <h1 class="contact-us-title">Contact us</h1>
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+    
+            <div class="input-container">
+                <h3>Emri</h3>
+                <input type="text" name="emri" placeholder="Vendosni emrin tuaj">
+            </div>
+
+            <div class="input-container">
+                <h3>Emaili</h3>
+                <input type="email" name="email" placeholder="Vendosni emailin tuaj">
+            </div>
+
+            <div class="input-container">
+                <h3>Nr. Kontakti</h3>
+                <input type="text" name="nr_cel" placeholder="Vendosni numrin tuaj te telefonit">
+            </div>
+
+            <div class="input-container">
+                <h3>Mesazhi</h3>
+                <textarea name="mesazhi" cols="50" rows="5" placeholder="Shkruani mesazhin tuaj"></textarea>
+            </div>
+
+            <div class="input-container">
+                <input type="submit" class="submit-btn">
+            </div>
+        </form>
+
+        {% if sukses %}
+            <h4 style="color: green;">
+                Kontakti u ruajt me sukses
+            </h4>
+        {% endif %}
+        
+    </div>
 {% endblock content %}
