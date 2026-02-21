@@ -31,6 +31,7 @@ class Restaurant(models.Model):
         choices=RESTAURANT_PLAN,
         default='Free'
     )
+    halal = models.BooleanField(default=False)
     email = models.EmailField()
     logo_link = models.URLField(default=None, blank=True)
     map_link = models.URLField(default=None, blank=True)
@@ -38,6 +39,40 @@ class Restaurant(models.Model):
     instagram_link = models.URLField(default=None, blank=True)
     tiktok_link = models.URLField(default=None, blank=True)
     web_link = models.URLField(default=None, blank=True)
+
+    def __str__(self):
+        return self.name
+
+MENU_ITEMS_CATEGORY_CHOICES = [
+    ('Sallata', 'Sallata'),
+    ('Antipasta', 'Antipasta'),
+    ('Pasta', 'Pasta'),
+    ('Rizoto', 'Rizoto'),
+    ('Mish', 'Mish'),
+    ('Burgers', 'Burgers'),
+    ('Pizza', 'Pizza'),
+    ('Embelsira', 'Embelsira'),
+    ('Hosomaki', 'Hosomaki'),
+    ('Uramaki', 'Uramaki'),
+    ('Uramaki-futomaki', 'Uramaki-futomaki'),
+    ('Soups', 'Soups'),
+    ('Drinks', 'Drinks'),
+    ('Sides', 'Sides'),
+    ('Kids', 'Kids'),
+    ('Sanduich', 'Sanduich')
+]
+
+class MenuItems(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='items')
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+    category = models.CharField(
+        choices=MENU_ITEMS_CATEGORY_CHOICES,
+        default='Mish'
+    )
+    price = models.DecimalField(decimal_places=2, max_digits=10)
+    image_link = models.URLField(default=None, blank=True)
+    halal = models.BooleanField()
 
     def __str__(self):
         return self.name

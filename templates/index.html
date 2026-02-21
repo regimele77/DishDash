@@ -4,6 +4,11 @@
 
     <h1 class="main-title">Our restaurants</h1>
 
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="search" placeholder="Kerko per ushqim">
+        <input type="submit">
+    </form>
+
     <div class="all-restaurants-container">
         {% for restaurant in all_restaurants %}
             <div class="cart-container">
@@ -21,7 +26,7 @@
                         {{ restaurant.description }}
                     </p>
                     <div class="restaurant-buttons">
-                        <a href="">View Menu</a>
+                        <a href="{% url 'restaurant_menu' restaurant.id %}">View Menu</a>
                         <a href="mailto:{{ restaurant.email }}">Contact us</a>
                     </div>
                 </div>

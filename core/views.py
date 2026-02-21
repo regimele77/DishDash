@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from restaurant.models import Restaurant
 from django.core.mail import send_mail
+
+from restaurant.models import Restaurant, MenuItems, MENU_ITEMS_CATEGORY_CHOICES
 
 def index(request):
     all_restaurants = Restaurant.objects.all()
@@ -29,8 +30,8 @@ def contact(request):
             Numri i telefonit eshte {nr_tel}. Personi ka
             shkruar kete mesazh: {mesazhi}
             """,
-            "",
-            [""],
+            "lagjimartin@gmail.com",
+            ["ajlameta08@gmail.com"],
             fail_silently=False,
         )
 
@@ -40,7 +41,7 @@ def contact(request):
             Kerkesa juaj u mor dhe do te procesohet. Do ju kontaktoje stafi
             yne brenda 24-48 oresh. Diten e mire.
             """,
-            "",
+            "lagjimartin@gmail.com",
             [email],
             fail_silently=False
         )
@@ -52,3 +53,31 @@ def contact(request):
 
 def pricing(request):
     return render(request, 'pricing.html')
+
+def restaurant_menu(request, pk):
+    restaurant_items = MenuItems.objects.filter(
+        restaurant = pk
+    )
+    
+    categories = []
+    for c in MENU_ITEMS_CATEGORY_CHOICES:
+        categories.append(c[0])
+    
+    ctx = {
+        'restaurant_items': restaurant_items,
+        'categories': categories
+    }
+
+    return render(request, 'restaurant_menu.html', ctx)
+
+def search_results(request):
+    search_term = request.GET.get('search')
+    searched_items = MenuItems.objects.filter(
+        name__icontains=search_term
+    )
+
+    ctx = {
+        'searched_items': searched_items
+    }
+
+    return render(request, 'search_results.html', ctx)

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="search" placeholder="Kerko per ushqim">
+        <input type="submit">
+    </form>
+    
+<div class="all-restaurants-container">
+{% for item in searched_items %}
+    <div class="cart-container">
+                <img
+                    src="{{ item.image_link }}"
+                    width="100%"
+                    height="200px"
+                    style="border-radius: 15px;"
+                    alt="{{ restaurant.name }}"
+                >
+
+                <div class="content-container">
+                    <h2 class="restaurant-title">{{ item.name }}</h2>
+                    <p class="restaurant-description">
+                        {{ item.description }}
+                    </p>
+                    <h5>
+                        {{ item.restaurant }}
+                    </h5>
+                </div>
+            </div>
+{% endfor %}
+</div>
+
+{% endblock content %}
